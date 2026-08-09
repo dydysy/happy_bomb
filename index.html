@@ -675,7 +675,7 @@
     const alreadySent = localStorage.getItem("bamtori_wish_sent") === "1";
     if (savedWish){
       wishInput.value = savedWish;
-      candle.classList.add("blown");
+      candle?.classList.add("blown"); // 👈 candle이 없어도 에러가 나지 않도록 수정
       wishConfirm.classList.add("show");
       wishConfirm.textContent = alreadySent
         ? "알겠다 밤토리! 기대해라!"
@@ -714,7 +714,7 @@ async function autoSendWish(value){
     if (!value) { wishInput.focus(); return; }
 
     try{ localStorage.setItem("bamtori_wish", value); }catch(e){}
-    candle.classList.add("blown");
+    candle?.classList.add("blown"); // 👈 candle이 없어도 에러가 나지 않도록 수정
     wishConfirm.classList.add("show");
     wishConfirm.textContent = "보내는 중...";
     wishButton.disabled = true;
